@@ -6,12 +6,12 @@ pub mod bindgend;
 #[allow(clippy::all)]
 mod ffi;
 
-
 pub use self::ffi::*;
 
 #[cfg(test)]
 mod tests {
-    use crate::{clock};
+    use crate::{ctags_cli_main};
+    use std::ffi::CString;
 
     #[test]
     fn it_works() {
@@ -19,8 +19,9 @@ mod tests {
         assert_eq!(2 + 2, 4);
 
         unsafe {
-            let i = clock();
-            println!("{:?}", i);
+            let mut c_str = CString::new("hello").unwrap();
+            let mut point = c_str.as_ptr();
+            let i = ctags_cli_main(1, point as *mut *mut i8);
         }
     }
 }
