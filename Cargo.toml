@@ -1,0 +1,15 @@
+[package]
+name = "ctags-sys"
+version = "0.1.0"
+authors = ["Phodal Huang <h@phodal.com>"]
+edition = "2018"
+license = "Apache-2.0"
+description = "Data-oriented Rust UI design toolkit."
+repository = "https://github.com/inherd/ctags-sys"
+categories = ["cli"]
+readme = "README.md"
+keywords = ["ctags", "toolkit"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
