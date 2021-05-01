@@ -4,7 +4,7 @@ extern crate cc;
 extern crate pkg_config;
 
 use std::path::{Path, PathBuf};
-use std::env;
+use std::{env, fs};
 
 fn main() {
     let mut cfg = pkg_config::Config::new();
@@ -15,10 +15,13 @@ fn main() {
         }
         return;
     }
-    if let Ok(lib) = cfg.atleast_version("2.13.1").probe("jansson") {
+    if let Ok(_lib) = cfg.atleast_version("2.13.1").probe("jansson") {
     }
-    if let Ok(lib) = cfg.atleast_version("0.2.5").probe("libyaml") {
+    if let Ok(_lib) = cfg.atleast_version("0.2.5").probe("libyaml") {
     }
+
+    println!("cargo:rustc-link-lib=jansson");
+    println!("cargo:rustc-link-lib=libyaml");
 
     let ref src_path = Path::new("ctags");
 
@@ -209,7 +212,49 @@ fn main() {
         "main/debug.c"
     ];
 
-    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+    let config_h = out_dir.join("config.h");
+    fs::write(
+        config_h,
+        format!(
+                "
+#define CASE_INSENSITIVE_FILENAMES 1
+#define DEFAULT_FILE_FORMAT 2
+#define ETAGS \"etags\"
+#define HAVE_ASPRINTF 1
+#define HAVE_DECL__NSGETENVIRON 1
+#define HAVE_DECL___ENVIRON 0
+#define HAVE_DIRENT_H 1
+#define HAVE_FCNTL_H 1
+#define HAVE_ICONV 1
+#define HAVE_JANSSON 1
+#define HAVE_LIBXML 1
+#define HAVE_LIBYAML 1
+#define HAVE_MBLEN 1
+#define HAVE_MKSTEMP 1
+#define HAVE_OPENDIR 1
+#define HAVE_SCANDIR 1
+#define HAVE_SETENV 1
+#define HAVE_STAT_ST_INO 1
+#define HAVE_STDBOOL_H 1
+#define HAVE_STRCASECMP 1
+#define HAVE_STRERROR 1
+#define HAVE_STRNCASECMP 1
+#define HAVE_STRSTR 1
+#define HAVE_SYS_STAT_H 1
+#define HAVE_SYS_TYPES_H 1
+#define HAVE_TRUNCATE 1
+#define HAVE_TYPEOF 1
+#define HAVE_UNISTD_H 1
+#define PACKAGE \"universal-ctags\"
+#define PACKAGE_VERSION \"5.9.0\"
+#define VERSION \"5.9.0\"
+#define TMPDIR {}
+                ", out_dir.display()),
+        )
+        .expect("Can't write config.h to OUT_DIR");
+
+
     let bindings = bindgen::Builder::default()
         .header("ctags/main/general.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
@@ -217,7 +262,7 @@ fn main() {
         .expect("Unable to generate bindings");
 
     bindings
-        .write_to_file(out_path.join("bindings.rs"))
+        .write_to_file(out_dir.join("bindings.rs"))
         .expect("Couldn't write bindings!");
 
     let mut builder = cc::Build::new();
@@ -231,7 +276,7 @@ fn main() {
         ;
 
     builder
-        .include(&out_path)
+        .include(&out_dir)
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"))
