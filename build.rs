@@ -13,12 +13,6 @@ fn main() {
         libyaml_include = format!("{}", lib.include_paths[0].display());
     }
 
-    let libxml = pkg_config::Config::new();
-    let mut libxml_include = "".to_string();
-    if let Ok(lib) = libxml.probe("libxml") {
-        libxml_include = format!("{}", lib.include_paths[0].display());
-    }
-
     pkg_config::Config::new().atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
 
     let mut config = pkg_config::Config::new();
@@ -291,7 +285,7 @@ fn main() {
     builder
         .include(&out_dir)
         .include(Path::new(&libyaml_include))
-        .include(Path::new(&libxml_include))
+        .include(Path::new("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml"))
 
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
