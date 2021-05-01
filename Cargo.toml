@@ -15,6 +15,6 @@ keywords = ["ctags", "toolkit"]
 [dependencies]
 
 [build-dependencies]
-bindgen = { version = "0.56", optional = true, features = [ "runtime" ] }
+bindgen = { version = "0.56", features = [ "runtime" ] }
 pkg-config = "^0.3.16"
 cc = "1.0"
