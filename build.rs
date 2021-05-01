@@ -13,6 +13,12 @@ fn main() {
         libyaml_include = format!("{}", lib.include_paths[0].display());
     }
 
+    let libxml = pkg_config::Config::new();
+    let mut libxml_include = "".to_string();
+    if let Ok(lib) = libxml.probe("libxml") {
+        libxml_include = format!("{}", lib.include_paths[0].display());
+    }
+
     pkg_config::Config::new().atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
 
     let mut config = pkg_config::Config::new();
@@ -260,7 +266,9 @@ fn main() {
     let builder = bindgen::Builder::default()
         .header("ctags/main/main_p.h")
         .clang_arg("-std=gnu99")
-        .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/");
+        .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/")
+        .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml/")
+        ;
 
     let bindings = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
@@ -276,11 +284,14 @@ fn main() {
         .flag("-DHAVE_CONFIG_H")
         .flag("-std=gnu99")
         .flag("-DHAVE_PACKCC")
-        .flag("-DUSE_SYSTEM_STRNLEN");
+        .flag("-DUSE_SYSTEM_STRNLEN")
+        .flag("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml/")
+    ;
 
     builder
         .include(&out_dir)
         .include(Path::new(&libyaml_include))
+        .include(Path::new(&libxml_include))
 
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
