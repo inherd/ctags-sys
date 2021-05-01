@@ -6,7 +6,7 @@ edition = "2018"
 license = "Apache-2.0"
 description = "Data-oriented Rust UI design toolkit."
 repository = "https://github.com/inherd/ctags-sys"
-categories = ["cli"]
+categories = ["parsing"]
 readme = "README.md"
 keywords = ["ctags", "toolkit"]
 
