@@ -203,24 +203,25 @@ fn main() {
         "parsers/ansibleplaybook.c",
         "main/debug.c"
     ];
-
-    let bindings = bindgen::Builder::default()
-        .header("ctags/main/ctags.h")
-        .derive_eq(true)
-        .layout_tests(false)
-        .generate()
-        .expect("Unable to generate bindings");
-
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
+
+    // let bindings = bindgen::Builder::default()
+    //     .header("ctags/main/ctags.h")
+    //     .derive_eq(true)
+    //     .layout_tests(false)
+    //     .generate()
+    //     .expect("Unable to generate bindings");
+    //
+    // bindings
+    //     .write_to_file(out_path.join("bindings.rs"))
+    //     .expect("Couldn't write bindings!");
 
     let mut builder = cc::Build::new();
-    builder.include("<stdbool.h>");
     builder.files(src_path.iter());
 
-    builder.include(Path::new("ctags").join("main"))
+    builder
+        .include(&out_path)
+        .include(Path::new("ctags").join("main"))
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"));
 
