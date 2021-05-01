@@ -7,18 +7,22 @@ use std::path::{Path, PathBuf};
 use std::{env, fs};
 
 fn main() {
-    let mut cfg = pkg_config::Config::new();
+    // libyaml has a error config, so we need to maunaly do this
+    let libyaml = pkg_config::Config::new();
+    let mut libyaml_include = "".to_string();
+    if let Ok(lib) = libyaml.probe("yaml-0.1") {
+        libyaml_include = format!("{}", lib.include_paths[0].display());
+    }
 
-    if let Ok(lib) = cfg.atleast_version("5.9.0").probe("ctags") {
+    pkg_config::Config::new().atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
+
+    let mut config = pkg_config::Config::new();
+    if let Ok(lib) = config.atleast_version("5.9.0").probe("ctags") {
         for include in &lib.include_paths {
             println!("cargo:root={}", include.display());
         }
         return;
     }
-
-    cfg.atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
-    // cfg.statik(true).expect("lost dep libyaml");
-    // cfg.atleast_version("0.1").probe("yaml").expect("lost dep yaml");
 
     let ref src_path = Path::new("ctags");
 
@@ -71,7 +75,7 @@ fn main() {
         "main/repoinfo.c",
         "main/mio.c",
         "fnmatch/fnmatch.c",
-        "gnu_regex/regex.c",
+        // "gnu_regex/regex.c",
         "parsers/abaqus.c",
         "parsers/abc.c",
         "parsers/ada.c",
@@ -272,12 +276,17 @@ fn main() {
 
     builder
         .include(&out_dir)
+        .include(Path::new(&libyaml_include))
+
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"))
         .include(Path::new("ctags").join("fnmatch"))
-        .include(Path::new("ctags").join("gnu_regex"))
-        .include(Path::new("ctags").join("main"));
+        // .include(Path::new("ctags").join("gnu_regex"))
+        .include(Path::new("ctags").join("extra-cmds"))
+
+        .include(Path::new("ctags").join("main"))
+    ;
 
     for file in files.iter() {
         builder.file(src_path.join(file));
