@@ -15,13 +15,10 @@ fn main() {
         }
         return;
     }
-    if let Ok(_lib) = cfg.atleast_version("2.13.1").probe("jansson") {
-    }
-    if let Ok(_lib) = cfg.atleast_version("0.2.5").probe("libyaml") {
-    }
 
-    println!("cargo:rustc-link-lib=jansson");
-    println!("cargo:rustc-link-lib=libyaml");
+    cfg.atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
+    // cfg.statik(true).expect("lost dep libyaml");
+    // cfg.atleast_version("0.1").probe("yaml").expect("lost dep yaml");
 
     let ref src_path = Path::new("ctags");
 
@@ -249,21 +246,20 @@ fn main() {
 #define PACKAGE \"universal-ctags\"
 #define PACKAGE_VERSION \"5.9.0\"
 #define VERSION \"5.9.0\"
-#define TMPDIR {}
+#define TMPDIR {:?}
                 ", out_dir.display()),
         )
         .expect("Can't write config.h to OUT_DIR");
 
-
-    let bindings = bindgen::Builder::default()
-        .header("ctags/main/general.h")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-        .generate()
-        .expect("Unable to generate bindings");
-
-    bindings
-        .write_to_file(out_dir.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
+    // let bindings = bindgen::Builder::default()
+    //     .header("ctags/main/general.h")
+    //     .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+    //     .generate()
+    //     .expect("Unable to generate bindings");
+    //
+    // bindings
+    //     .write_to_file(out_dir.join("bindings.rs"))
+    //     .expect("Couldn't write bindings!");
 
     let mut builder = cc::Build::new();
     builder.files(src_path.iter());
