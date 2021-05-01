@@ -7,6 +7,14 @@ use std::path::{Path, PathBuf};
 use std::env;
 
 fn main() {
+    // let mut cfg = pkg_config::Config::new();
+    // if let Ok(lib) = cfg.atleast_version("5.9.0").probe("ctags") {
+    //     for include in &lib.include_paths {
+    //         println!("cargo:root={}", include.display());
+    //     }
+    //     return;
+    // }
+
     let ref src_path = Path::new("ctags");
 
     let files = [
@@ -198,6 +206,8 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         .header("ctags/main/ctags.h")
+        .derive_eq(true)
+        .layout_tests(false)
         .generate()
         .expect("Unable to generate bindings");
 
