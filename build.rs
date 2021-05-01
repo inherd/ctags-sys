@@ -214,6 +214,9 @@ fn main() {
     ];
 
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+    let ctags_dir = out_dir.join("ctags.c");
+    fs::write(ctags_dir.clone(),"").expect("");
+
     let config_h = out_dir.join("config.h");
     fs::write(
         config_h,
@@ -282,7 +285,7 @@ fn main() {
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"))
         .include(Path::new("ctags").join("fnmatch"))
-        // .include(Path::new("ctags").join("gnu_regex"))
+        .include(Path::new("ctags").join("gnu_regex"))
         .include(Path::new("ctags").join("extra-cmds"))
 
         .include(Path::new("ctags").join("main"))
@@ -291,6 +294,7 @@ fn main() {
     for file in files.iter() {
         builder.file(src_path.join(file));
     }
+    builder.file(ctags_dir); // fake file;
 
     builder.warnings(false);
     builder.compile("ctags");
