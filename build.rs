@@ -215,13 +215,13 @@ fn main() {
 
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
     let ctags_dir = out_dir.join("ctags.c");
-    fs::write(ctags_dir.clone(),"").expect("");
+    fs::write(ctags_dir.clone(), "").expect("");
 
     let config_h = out_dir.join("config.h");
     fs::write(
         config_h,
         format!(
-                "
+            "
 #define CASE_INSENSITIVE_FILENAMES 1
 #define DEFAULT_FILE_FORMAT 2
 #define ETAGS \"etags\"
@@ -255,12 +255,13 @@ fn main() {
 #define VERSION \"5.9.0\"
 #define TMPDIR {:?}
                 ", out_dir.display()),
-        )
+    )
         .expect("Can't write config.h to OUT_DIR");
 
-    // let bindings = bindgen::Builder::default()
-    //     .header("ctags/main/general.h")
-    //     .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+    // let builder = bindgen::Builder::default()
+    //     .header("ctags/main/general.h");
+    //
+    // let bindings = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks))
     //     .generate()
     //     .expect("Unable to generate bindings");
     //
@@ -274,8 +275,7 @@ fn main() {
         .flag("-DHAVE_CONFIG_H")
         .flag("-std=c99")
         .flag("-DHAVE_PACKCC")
-        .flag("-DUSE_SYSTEM_STRNLEN")
-        ;
+        .flag("-DUSE_SYSTEM_STRNLEN");
 
     builder
         .include(&out_dir)
