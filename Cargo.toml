@@ -13,3 +13,8 @@ keywords = ["ctags", "toolkit"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[build-dependencies]
+bindgen = { version = "0.56", optional = true, features = [ "runtime" ] }
+pkg-config = "^0.3.16"
+cc = "1.0"
