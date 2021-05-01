@@ -217,16 +217,16 @@ fn main() {
     ];
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
-    // let bindings = bindgen::Builder::default()
-    //     .header("ctags/main/ctags.h")
-    //     .derive_eq(true)
-    //     .layout_tests(false)
-    //     .generate()
-    //     .expect("Unable to generate bindings");
-    //
-    // bindings
-    //     .write_to_file(out_path.join("bindings.rs"))
-    //     .expect("Couldn't write bindings!");
+    let bindings = bindgen::Builder::default()
+        .header("ctags/main/ctags.h")
+        .derive_eq(true)
+        .layout_tests(false)
+        .generate()
+        .expect("Unable to generate bindings");
+
+    bindings
+        .write_to_file(out_path.join("bindings.rs"))
+        .expect("Couldn't write bindings!");
 
     let mut builder = cc::Build::new();
     builder.files(src_path.iter());
