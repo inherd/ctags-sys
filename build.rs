@@ -258,22 +258,24 @@ fn main() {
     )
         .expect("Can't write config.h to OUT_DIR");
 
-    // let builder = bindgen::Builder::default()
-    //     .header("ctags/main/general.h");
-    //
-    // let bindings = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks))
-    //     .generate()
-    //     .expect("Unable to generate bindings");
-    //
-    // bindings
-    //     .write_to_file(out_dir.join("bindings.rs"))
-    //     .expect("Couldn't write bindings!");
+    let builder = bindgen::Builder::default()
+        .header("ctags/main/general.h")
+        .clang_arg("-std=gnu99")
+        .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/");
+
+    let bindings = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .generate()
+        .expect("Unable to generate bindings");
+
+    bindings
+        .write_to_file(out_dir.join("bindings.rs"))
+        .expect("Couldn't write bindings!");
 
     let mut builder = cc::Build::new();
     builder.files(src_path.iter());
     builder
         .flag("-DHAVE_CONFIG_H")
-        .flag("-std=c99")
+        .flag("-std=gnu99")
         .flag("-DHAVE_PACKCC")
         .flag("-DUSE_SYSTEM_STRNLEN");
 
