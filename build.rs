@@ -219,8 +219,12 @@ fn main() {
     let mut builder = cc::Build::new();
     builder.files(src_path.iter());
     builder
-        .flag("cc=gcc");
-        // .flag("-std=c99");
+        .flag("-DHAVE_CONFIG_H")
+        .flag("-std=c99")
+        .flag("-DHAVE_PACKCC")
+        .flag("-DUSE_SYSTEM_STRNLEN")
+        .flag("-DHAVE_REPOINFO_H")
+        ;
 
     builder
         .include(&out_path)
