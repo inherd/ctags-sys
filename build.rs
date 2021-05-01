@@ -8,6 +8,7 @@ use std::env;
 
 fn main() {
     let mut cfg = pkg_config::Config::new();
+
     if let Ok(lib) = cfg.atleast_version("5.9.0").probe("ctags") {
         for include in &lib.include_paths {
             println!("cargo:root={}", include.display());
@@ -215,12 +216,11 @@ fn main() {
         "parsers/ansibleplaybook.c",
         "main/debug.c"
     ];
-    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
+    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     let bindings = bindgen::Builder::default()
-        .header("ctags/main/ctags.h")
-        .derive_eq(true)
-        .layout_tests(false)
+        .header("ctags/main/general.h")
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings");
 

@@ -9,6 +9,7 @@ repository = "https://github.com/inherd/ctags-sys"
 categories = ["parsing"]
 readme = "README.md"
 keywords = ["ctags", "toolkit"]
+build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
