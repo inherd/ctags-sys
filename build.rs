@@ -1,4 +1,3 @@
-#[cfg(feature = "generate")]
 extern crate bindgen;
 extern crate cc;
 extern crate pkg_config;
@@ -259,7 +258,7 @@ fn main() {
         .expect("Can't write config.h to OUT_DIR");
 
     let builder = bindgen::Builder::default()
-        .header("ctags/main/general.h")
+        .header("ctags/main/main_p.h")
         .clang_arg("-std=gnu99")
         .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/");
 
