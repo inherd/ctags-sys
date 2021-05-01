@@ -14,6 +14,18 @@ fn main() {
         }
         return;
     }
+    if let Ok(lib) = cfg.atleast_version("2.13.1").probe("jansson") {
+        for include in &lib.include_paths {
+            println!("cargo:root={}", include.display());
+        }
+        return;
+    }
+    if let Ok(lib) = cfg.atleast_version("0.2.5").probe("libyaml") {
+        for include in &lib.include_paths {
+            println!("cargo:root={}", include.display());
+        }
+        return;
+    }
 
     let ref src_path = Path::new("ctags");
 
@@ -228,6 +240,7 @@ fn main() {
 
     builder
         .include(&out_path)
+        .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("main"))
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"));
