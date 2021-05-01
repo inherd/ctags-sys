@@ -7,13 +7,13 @@ use std::path::{Path, PathBuf};
 use std::env;
 
 fn main() {
-    // let mut cfg = pkg_config::Config::new();
-    // if let Ok(lib) = cfg.atleast_version("5.9.0").probe("ctags") {
-    //     for include in &lib.include_paths {
-    //         println!("cargo:root={}", include.display());
-    //     }
-    //     return;
-    // }
+    let mut cfg = pkg_config::Config::new();
+    if let Ok(lib) = cfg.atleast_version("5.9.0").probe("ctags") {
+        for include in &lib.include_paths {
+            println!("cargo:root={}", include.display());
+        }
+        return;
+    }
 
     let ref src_path = Path::new("ctags");
 
@@ -218,6 +218,9 @@ fn main() {
 
     let mut builder = cc::Build::new();
     builder.files(src_path.iter());
+    builder
+        .flag("cc=gcc");
+        // .flag("-std=c99");
 
     builder
         .include(&out_path)
