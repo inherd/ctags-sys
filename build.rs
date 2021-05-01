@@ -268,7 +268,6 @@ fn main() {
         .flag("-std=c99")
         .flag("-DHAVE_PACKCC")
         .flag("-DUSE_SYSTEM_STRNLEN")
-        .flag("-DHAVE_REPOINFO_H")
         ;
 
     builder
@@ -276,6 +275,8 @@ fn main() {
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
         .include(Path::new("ctags").join("optlib"))
+        .include(Path::new("ctags").join("fnmatch"))
+        .include(Path::new("ctags").join("gnu_regex"))
         .include(Path::new("ctags").join("main"));
 
     for file in files.iter() {
