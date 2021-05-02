@@ -1,7 +1,10 @@
 # Ctags Sys
 
-
 ## setup
+
+other requirements: [packcc](https://github.com/arithy/packcc)
+
+### Setup
 
 see in ctags workflow
 
