@@ -209,7 +209,9 @@ fn main() {
         "parsers/xslt.c",
         "parsers/yaml.c",
         "parsers/ansibleplaybook.c",
-        "main/debug.c"
+         // todo： add packcc convert
+        "peg/kotlin.c",
+        "peg/varlink.c",
     ];
 
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
@@ -258,9 +260,11 @@ fn main() {
     )
         .expect("Can't write config.h to OUT_DIR");
 
+    let peg_source = Path::new("ctags").join("peg");
     let builder = bindgen::Builder::default()
         .header("ctags/main/main_p.h")
         .clang_arg("-std=gnu99")
+        .clang_arg(format!("-I{}", peg_source.display()))
         .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/")
         .clang_arg("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml/")
         ;
