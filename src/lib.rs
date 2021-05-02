@@ -10,18 +10,29 @@ pub use self::ffi::*;
 
 #[cfg(test)]
 mod tests {
+    extern crate libc;
     use crate::{ctags_cli_main};
     use std::ffi::CString;
+    use std::os::raw::c_char;
 
     #[test]
     fn it_works() {
         println!("{:?}", env!("OUT_DIR"));
         assert_eq!(2 + 2, 4);
 
+        let mut params: Vec<&str> = vec![
+            "-p",
+            "src/ffi.rs"
+        ];
+        let mut parameters: Vec<*mut i8> =
+            params
+                .iter()
+                .map(|s| {
+                    "src/ffi.rs".to_string().as_mut_ptr() as *mut i8
+                }).collect();
+
         unsafe {
-            let c_str = CString::new("hello").unwrap();
-            let point = c_str.as_ptr();
-            let i = ctags_cli_main(1, point as *mut *mut i8);
+            let i = ctags_cli_main(1, parameters.as_mut_ptr());
         }
     }
 }
