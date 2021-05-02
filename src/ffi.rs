@@ -207,6 +207,7 @@ pub const __MAC_OS_X_VERSION_MAX_ALLOWED: u32 = 110300;
 pub const __ENABLE_LEGACY_MAC_AVAILABILITY: u32 = 1;
 pub const CLOCKS_PER_SEC: u32 = 1000000;
 pub const TIME_UTC: u32 = 1;
+
 pub type __int8_t = ::std::os::raw::c_schar;
 pub type __uint8_t = ::std::os::raw::c_uchar;
 pub type __int16_t = ::std::os::raw::c_short;
@@ -218,6 +219,7 @@ pub type __uint64_t = ::std::os::raw::c_ulonglong;
 pub type __darwin_intptr_t = ::std::os::raw::c_long;
 pub type __darwin_natural_t = ::std::os::raw::c_uint;
 pub type __darwin_ct_rune_t = ::std::os::raw::c_int;
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union __mbstate_t {
@@ -225,6 +227,7 @@ pub union __mbstate_t {
     pub _mbstateL: ::std::os::raw::c_longlong,
     _bindgen_union_align: [u64; 16usize],
 }
+
 #[test]
 fn bindgen_test_layout___mbstate_t() {
     assert_eq!(
@@ -241,23 +244,24 @@ fn bindgen_test_layout___mbstate_t() {
         unsafe { &(*(::std::ptr::null::<__mbstate_t>())).__mbstate8 as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t),
-            "::",
-            stringify!(__mbstate8)
+        "Offset of field: ",
+        stringify!(__mbstate_t),
+        "::",
+        stringify!(__mbstate8)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<__mbstate_t>()))._mbstateL as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t),
-            "::",
-            stringify!(_mbstateL)
+        "Offset of field: ",
+        stringify!(__mbstate_t),
+        "::",
+        stringify!(_mbstateL)
         )
     );
 }
+
 pub type __darwin_mbstate_t = __mbstate_t;
 pub type __darwin_ptrdiff_t = ::std::os::raw::c_long;
 pub type __darwin_size_t = ::std::os::raw::c_ulong;
@@ -289,6 +293,7 @@ pub type __darwin_uid_t = __uint32_t;
 pub type __darwin_useconds_t = __uint32_t;
 pub type __darwin_uuid_t = [::std::os::raw::c_uchar; 16usize];
 pub type __darwin_uuid_string_t = [::std::os::raw::c_char; 37usize];
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __darwin_pthread_handler_rec {
@@ -296,6 +301,7 @@ pub struct __darwin_pthread_handler_rec {
     pub __arg: *mut ::std::os::raw::c_void,
     pub __next: *mut __darwin_pthread_handler_rec,
 }
+
 #[test]
 fn bindgen_test_layout___darwin_pthread_handler_rec() {
     assert_eq!(
@@ -314,10 +320,10 @@ fn bindgen_test_layout___darwin_pthread_handler_rec() {
         },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__darwin_pthread_handler_rec),
-            "::",
-            stringify!(__routine)
+        "Offset of field: ",
+        stringify!(__darwin_pthread_handler_rec),
+        "::",
+        stringify!(__routine)
         )
     );
     assert_eq!(
@@ -326,10 +332,10 @@ fn bindgen_test_layout___darwin_pthread_handler_rec() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__darwin_pthread_handler_rec),
-            "::",
-            stringify!(__arg)
+        "Offset of field: ",
+        stringify!(__darwin_pthread_handler_rec),
+        "::",
+        stringify!(__arg)
         )
     );
     assert_eq!(
@@ -338,19 +344,21 @@ fn bindgen_test_layout___darwin_pthread_handler_rec() {
         },
         16usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__darwin_pthread_handler_rec),
-            "::",
-            stringify!(__next)
+        "Offset of field: ",
+        stringify!(__darwin_pthread_handler_rec),
+        "::",
+        stringify!(__next)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _opaque_pthread_attr_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 56usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_attr_t() {
     assert_eq!(
@@ -367,29 +375,31 @@ fn bindgen_test_layout__opaque_pthread_attr_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_attr_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_attr_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_attr_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_attr_t>())).__opaque as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_attr_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_attr_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _opaque_pthread_cond_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 40usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_cond_t() {
     assert_eq!(
@@ -406,29 +416,31 @@ fn bindgen_test_layout__opaque_pthread_cond_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_cond_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_cond_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_cond_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_cond_t>())).__opaque as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_cond_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_cond_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _opaque_pthread_condattr_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 8usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_condattr_t() {
     assert_eq!(
@@ -447,10 +459,10 @@ fn bindgen_test_layout__opaque_pthread_condattr_t() {
         },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_condattr_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_condattr_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -459,19 +471,21 @@ fn bindgen_test_layout__opaque_pthread_condattr_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_condattr_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_condattr_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _opaque_pthread_mutex_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 56usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_mutex_t() {
     assert_eq!(
@@ -488,10 +502,10 @@ fn bindgen_test_layout__opaque_pthread_mutex_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_mutex_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_mutex_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_mutex_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -500,19 +514,21 @@ fn bindgen_test_layout__opaque_pthread_mutex_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_mutex_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_mutex_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _opaque_pthread_mutexattr_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 8usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_mutexattr_t() {
     assert_eq!(
@@ -531,10 +547,10 @@ fn bindgen_test_layout__opaque_pthread_mutexattr_t() {
         },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_mutexattr_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_mutexattr_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -543,19 +559,21 @@ fn bindgen_test_layout__opaque_pthread_mutexattr_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_mutexattr_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_mutexattr_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _opaque_pthread_once_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 8usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_once_t() {
     assert_eq!(
@@ -572,29 +590,31 @@ fn bindgen_test_layout__opaque_pthread_once_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_once_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_once_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_once_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_once_t>())).__opaque as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_once_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_once_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _opaque_pthread_rwlock_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 192usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_rwlock_t() {
     assert_eq!(
@@ -611,10 +631,10 @@ fn bindgen_test_layout__opaque_pthread_rwlock_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_rwlock_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_rwlock_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_rwlock_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -623,19 +643,21 @@ fn bindgen_test_layout__opaque_pthread_rwlock_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_rwlock_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_rwlock_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _opaque_pthread_rwlockattr_t {
     pub __sig: ::std::os::raw::c_long,
     pub __opaque: [::std::os::raw::c_char; 16usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_rwlockattr_t() {
     assert_eq!(
@@ -654,10 +676,10 @@ fn bindgen_test_layout__opaque_pthread_rwlockattr_t() {
         },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_rwlockattr_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_rwlockattr_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -666,13 +688,14 @@ fn bindgen_test_layout__opaque_pthread_rwlockattr_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_rwlockattr_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_rwlockattr_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _opaque_pthread_t {
@@ -680,6 +703,7 @@ pub struct _opaque_pthread_t {
     pub __cleanup_stack: *mut __darwin_pthread_handler_rec,
     pub __opaque: [::std::os::raw::c_char; 8176usize],
 }
+
 #[test]
 fn bindgen_test_layout__opaque_pthread_t() {
     assert_eq!(
@@ -696,10 +720,10 @@ fn bindgen_test_layout__opaque_pthread_t() {
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_t>())).__sig as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_t),
-            "::",
-            stringify!(__sig)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_t),
+        "::",
+        stringify!(__sig)
         )
     );
     assert_eq!(
@@ -708,23 +732,24 @@ fn bindgen_test_layout__opaque_pthread_t() {
         },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_t),
-            "::",
-            stringify!(__cleanup_stack)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_t),
+        "::",
+        stringify!(__cleanup_stack)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<_opaque_pthread_t>())).__opaque as *const _ as usize },
         16usize,
         concat!(
-            "Offset of field: ",
-            stringify!(_opaque_pthread_t),
-            "::",
-            stringify!(__opaque)
+        "Offset of field: ",
+        stringify!(_opaque_pthread_t),
+        "::",
+        stringify!(__opaque)
         )
     );
 }
+
 pub type __darwin_pthread_attr_t = _opaque_pthread_attr_t;
 pub type __darwin_pthread_cond_t = _opaque_pthread_cond_t;
 pub type __darwin_pthread_condattr_t = _opaque_pthread_condattr_t;
@@ -754,12 +779,14 @@ pub type syscall_arg_t = u_int64_t;
 pub type clock_t = __darwin_clock_t;
 pub type size_t = __darwin_size_t;
 pub type time_t = __darwin_time_t;
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct timespec {
     pub tv_sec: __darwin_time_t,
     pub tv_nsec: ::std::os::raw::c_long,
 }
+
 #[test]
 fn bindgen_test_layout_timespec() {
     assert_eq!(
@@ -776,23 +803,24 @@ fn bindgen_test_layout_timespec() {
         unsafe { &(*(::std::ptr::null::<timespec>())).tv_sec as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(timespec),
-            "::",
-            stringify!(tv_sec)
+        "Offset of field: ",
+        stringify!(timespec),
+        "::",
+        stringify!(tv_sec)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<timespec>())).tv_nsec as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(timespec),
-            "::",
-            stringify!(tv_nsec)
+        "Offset of field: ",
+        stringify!(timespec),
+        "::",
+        stringify!(tv_nsec)
         )
     );
 }
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tm {
@@ -808,6 +836,7 @@ pub struct tm {
     pub tm_gmtoff: ::std::os::raw::c_long,
     pub tm_zone: *mut ::std::os::raw::c_char,
 }
+
 #[test]
 fn bindgen_test_layout_tm() {
     assert_eq!(
@@ -824,149 +853,162 @@ fn bindgen_test_layout_tm() {
         unsafe { &(*(::std::ptr::null::<tm>())).tm_sec as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_sec)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_sec)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_min as *const _ as usize },
         4usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_min)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_min)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_hour as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_hour)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_hour)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_mday as *const _ as usize },
         12usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_mday)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_mday)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_mon as *const _ as usize },
         16usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_mon)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_mon)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_year as *const _ as usize },
         20usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_year)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_year)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_wday as *const _ as usize },
         24usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_wday)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_wday)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_yday as *const _ as usize },
         28usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_yday)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_yday)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_isdst as *const _ as usize },
         32usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_isdst)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_isdst)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_gmtoff as *const _ as usize },
         40usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_gmtoff)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_gmtoff)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<tm>())).tm_zone as *const _ as usize },
         48usize,
         concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_zone)
+        "Offset of field: ",
+        stringify!(tm),
+        "::",
+        stringify!(tm_zone)
         )
     );
 }
+
 extern "C" {
     pub static mut tzname: [*mut ::std::os::raw::c_char; 0usize];
 }
+
 extern "C" {
     pub static mut getdate_err: ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub static mut timezone: ::std::os::raw::c_long;
 }
+
 extern "C" {
     pub static mut daylight: ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub fn asctime(arg1: *const tm) -> *mut ::std::os::raw::c_char;
 }
+
 extern "C" {
     pub fn clock() -> clock_t;
 }
+
 extern "C" {
     pub fn ctime(arg1: *const time_t) -> *mut ::std::os::raw::c_char;
 }
+
 extern "C" {
     pub fn difftime(arg1: time_t, arg2: time_t) -> f64;
 }
+
 extern "C" {
     pub fn getdate(arg1: *const ::std::os::raw::c_char) -> *mut tm;
 }
+
 extern "C" {
     pub fn gmtime(arg1: *const time_t) -> *mut tm;
 }
+
 extern "C" {
     pub fn localtime(arg1: *const time_t) -> *mut tm;
 }
+
 extern "C" {
     pub fn mktime(arg1: *mut tm) -> time_t;
 }
+
 extern "C" {
     pub fn strftime(
         arg1: *mut ::std::os::raw::c_char,
@@ -975,6 +1017,7 @@ extern "C" {
         arg4: *const tm,
     ) -> size_t;
 }
+
 extern "C" {
     pub fn strptime(
         arg1: *const ::std::os::raw::c_char,
@@ -982,48 +1025,61 @@ extern "C" {
         arg3: *mut tm,
     ) -> *mut ::std::os::raw::c_char;
 }
+
 extern "C" {
     pub fn time(arg1: *mut time_t) -> time_t;
 }
+
 extern "C" {
     pub fn tzset();
 }
+
 extern "C" {
     pub fn asctime_r(
         arg1: *const tm,
         arg2: *mut ::std::os::raw::c_char,
     ) -> *mut ::std::os::raw::c_char;
 }
+
 extern "C" {
     pub fn ctime_r(
         arg1: *const time_t,
         arg2: *mut ::std::os::raw::c_char,
     ) -> *mut ::std::os::raw::c_char;
 }
+
 extern "C" {
     pub fn gmtime_r(arg1: *const time_t, arg2: *mut tm) -> *mut tm;
 }
+
 extern "C" {
     pub fn localtime_r(arg1: *const time_t, arg2: *mut tm) -> *mut tm;
 }
+
 extern "C" {
     pub fn posix2time(arg1: time_t) -> time_t;
 }
+
 extern "C" {
     pub fn tzsetwall();
 }
+
 extern "C" {
     pub fn time2posix(arg1: time_t) -> time_t;
 }
+
 extern "C" {
     pub fn timelocal(arg1: *mut tm) -> time_t;
 }
+
 extern "C" {
     pub fn timegm(arg1: *mut tm) -> time_t;
 }
+
 extern "C" {
     pub fn nanosleep(__rqtp: *const timespec, __rmtp: *mut timespec) -> ::std::os::raw::c_int;
 }
+
 pub const clockid_t__CLOCK_REALTIME: clockid_t = 0;
 pub const clockid_t__CLOCK_MONOTONIC: clockid_t = 6;
 pub const clockid_t__CLOCK_MONOTONIC_RAW: clockid_t = 4;
@@ -1032,29 +1088,38 @@ pub const clockid_t__CLOCK_UPTIME_RAW: clockid_t = 8;
 pub const clockid_t__CLOCK_UPTIME_RAW_APPROX: clockid_t = 9;
 pub const clockid_t__CLOCK_PROCESS_CPUTIME_ID: clockid_t = 12;
 pub const clockid_t__CLOCK_THREAD_CPUTIME_ID: clockid_t = 16;
+
 pub type clockid_t = ::std::os::raw::c_uint;
+
 extern "C" {
     pub fn clock_getres(__clock_id: clockid_t, __res: *mut timespec) -> ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub fn clock_gettime(__clock_id: clockid_t, __tp: *mut timespec) -> ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub fn clock_gettime_nsec_np(__clock_id: clockid_t) -> __uint64_t;
 }
+
 extern "C" {
     pub fn clock_settime(__clock_id: clockid_t, __tp: *const timespec) -> ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub fn timespec_get(ts: *mut timespec, base: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
+
 extern "C" {
     pub fn ctags_cli_main(
         argc: ::std::os::raw::c_int,
         argv: *mut *mut ::std::os::raw::c_char,
     ) -> ::std::os::raw::c_int;
 }
+
 pub type __builtin_va_list = [__va_list_tag; 1usize];
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __va_list_tag {
@@ -1063,6 +1128,7 @@ pub struct __va_list_tag {
     pub overflow_arg_area: *mut ::std::os::raw::c_void,
     pub reg_save_area: *mut ::std::os::raw::c_void,
 }
+
 #[test]
 fn bindgen_test_layout___va_list_tag() {
     assert_eq!(
@@ -1079,40 +1145,40 @@ fn bindgen_test_layout___va_list_tag() {
         unsafe { &(*(::std::ptr::null::<__va_list_tag>())).gp_offset as *const _ as usize },
         0usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__va_list_tag),
-            "::",
-            stringify!(gp_offset)
+        "Offset of field: ",
+        stringify!(__va_list_tag),
+        "::",
+        stringify!(gp_offset)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<__va_list_tag>())).fp_offset as *const _ as usize },
         4usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__va_list_tag),
-            "::",
-            stringify!(fp_offset)
+        "Offset of field: ",
+        stringify!(__va_list_tag),
+        "::",
+        stringify!(fp_offset)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<__va_list_tag>())).overflow_arg_area as *const _ as usize },
         8usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__va_list_tag),
-            "::",
-            stringify!(overflow_arg_area)
+        "Offset of field: ",
+        stringify!(__va_list_tag),
+        "::",
+        stringify!(overflow_arg_area)
         )
     );
     assert_eq!(
         unsafe { &(*(::std::ptr::null::<__va_list_tag>())).reg_save_area as *const _ as usize },
         16usize,
         concat!(
-            "Offset of field: ",
-            stringify!(__va_list_tag),
-            "::",
-            stringify!(reg_save_area)
+        "Offset of field: ",
+        stringify!(__va_list_tag),
+        "::",
+        stringify!(reg_save_area)
         )
     );
 }

@@ -216,6 +216,13 @@ fn main() {
     ];
 
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+
+    // wrapper.c from main.c without exit(0)
+    // let s = env!("CARGO_MANIFEST_DIR");
+    // let from = PathBuf::from(s).join("wrapper").join("wrapper.c");
+    // let ctags_dir = out_dir.join("ctags.c");
+    // fs::copy(&from, &ctags_dir).unwrap();
+
     let ctags_dir = out_dir.join("ctags.c");
     fs::write(ctags_dir.clone(), "").expect("");
 

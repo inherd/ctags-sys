@@ -2,7 +2,8 @@
 
 - [x] make compile success
 - [x] callable
-- [ ] use packcc to convert code
+- [ ] use packcc to convert code kotlin.peg and varlink.peg
+- [ ] remove main `exit(0)`
 
 ## setup
 
