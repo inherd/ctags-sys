@@ -15,13 +15,10 @@ fn main() {
 
     pkg_config::Config::new().atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
 
-    let mut config = pkg_config::Config::new();
-    if let Ok(lib) = config.atleast_version("5.9.0").probe("ctags") {
-        for include in &lib.include_paths {
-            println!("cargo:root={}", include.display());
-        }
-        return;
-    }
+    println!("cargo:rustc-link-lib=xml2");
+
+    #[cfg(target_os = "macos")]
+    println!("cargo:rustc-link-lib=framework=ApplicationServices");
 
     let ref src_path = Path::new("ctags");
 
@@ -279,13 +276,11 @@ fn main() {
         .flag("-std=gnu99")
         .flag("-DHAVE_PACKCC")
         .flag("-DUSE_SYSTEM_STRNLEN")
-        .flag("-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml/")
     ;
 
     builder
         .include(&out_dir)
         .include(Path::new(&libyaml_include))
-        .include(Path::new("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libxml"))
 
         .include(Path::new("ctags").join("peg"))
         .include(Path::new("ctags").join("parsers"))
