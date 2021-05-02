@@ -71,6 +71,9 @@ fn main() {
         "main/repoinfo.c",
         "main/mio.c",
         "fnmatch/fnmatch.c",
+        // "gnu_regex/regcomp.c",
+        // "gnu_regex/regexec.c",
+        // "gnu_regex/regex_internal.c",
         // "gnu_regex/regex.c",
         "parsers/abaqus.c",
         "parsers/abc.c",
@@ -233,6 +236,7 @@ fn main() {
 #define HAVE_MBLEN 1
 #define HAVE_MKSTEMP 1
 #define HAVE_OPENDIR 1
+#define HAVE_PACKCC 0
 #define HAVE_SCANDIR 1
 #define HAVE_SETENV 1
 #define HAVE_STAT_ST_INO 1
@@ -274,7 +278,6 @@ fn main() {
     builder
         .flag("-DHAVE_CONFIG_H")
         .flag("-std=gnu99")
-        .flag("-DHAVE_PACKCC")
         .flag("-DUSE_SYSTEM_STRNLEN")
     ;
 
