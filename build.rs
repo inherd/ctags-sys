@@ -13,9 +13,9 @@ fn main() {
         libyaml_include = format!("{}", lib.include_paths[0].display());
     }
 
-    pkg_config::Config::new().atleast_version("2.13.1").probe("jansson").expect("lost dep janson");
-
     println!("cargo:rustc-link-lib=xml2");
+    println!("cargo:rustc-link-lib=iconv");
+    println!("cargo:rustc-link-lib=jansson");
 
     #[cfg(target_os = "macos")]
     println!("cargo:rustc-link-lib=framework=ApplicationServices");
