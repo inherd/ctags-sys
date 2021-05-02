@@ -1,5 +1,9 @@
 # Ctags Sys
 
+- [x] make compile success
+- [x] callable
+- [ ] use packcc to convert code
+
 ## setup
 
 other requirements: [packcc](https://github.com/arithy/packcc)

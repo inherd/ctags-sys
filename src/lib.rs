@@ -19,8 +19,8 @@ mod tests {
         assert_eq!(2 + 2, 4);
 
         unsafe {
-            let mut c_str = CString::new("hello").unwrap();
-            let mut point = c_str.as_ptr();
+            let c_str = CString::new("hello").unwrap();
+            let point = c_str.as_ptr();
             let i = ctags_cli_main(1, point as *mut *mut i8);
         }
     }
